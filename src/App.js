@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import FormInput from "./components/FormInput"
+import List from "./components/List"
+import FilterTodo from "./components/FilterTodo"
+import Footer from "./components/Footer"
+import { DataProvider } from "./components/DataProvider"
+
 
 function App() {
+  const [filterValue, setFilterValue] = useState("all")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <div className="App">
+        <h1>To Do List</h1>
+        <FormInput />
+        <FilterTodo filterValue={filterValue} setFilterValue={setFilterValue} />
+        <List filterValue={filterValue} />
+        <Footer />
+      </div>
+    </DataProvider>
   );
 }
 

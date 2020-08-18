@@ -4,12 +4,12 @@ export const DataContext = createContext();
 
 export const DataProvider = (props) => {
     const [todos, setTodos] = useState([]);
-    //creating data store on browser
+    //saving data store on browser
     useEffect(()=>{
         const todoStore = JSON.parse(localStorage.getItem('todoStore'))
         if (todoStore) setTodos(todoStore) 
     },[])
-    // saving todo list on browser 
+    // creating todo list on browser 
     useEffect(()=>{
         localStorage.setItem('todoStore',JSON.stringify(todos))
     }, [todos])
